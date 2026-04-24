@@ -1,0 +1,142 @@
+:root {
+  color-scheme: light;
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  --bg: #f7f9fc;
+  --card: #ffffff;
+  --line: #d0d8e6;
+  --text: #1e2a39;
+  --muted: #5f6f82;
+  --accent: #2e7cff;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  margin-bottom: 12px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 8px;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.controls,
+.history-panel,
+.replay-panel,
+.matches-grid > article {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(10, 33, 78, 0.05);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.sliders label,
+.replay-slider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.matches-grid canvas,
+#replayBoard {
+  width: 100%;
+  height: auto;
+  background: #f8deb0;
+  border-radius: 6px;
+}
+
+.history-panel,
+.replay-panel {
+  margin-bottom: 12px;
+}
+
+.history-list {
+  max-height: 350px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  border-color: var(--accent);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}

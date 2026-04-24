@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오목 AI 유전자 시뮬레이터</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>오목 AI 유전자 시뮬레이터</h1>
+      <p>룰을 모르는 에이전트들이 서로 두며 세대별로 진화하는 과정을 실시간 관찰하세요.</p>
+    </header>
+
+    <section class="controls">
+      <div class="control-group">
+        <button id="startBtn">시작</button>
+        <button id="pauseBtn" disabled>일시정지</button>
+        <button id="stepBtn">1틱 진행</button>
+        <button id="resetBtn">리셋</button>
+      </div>
+      <div class="control-group sliders">
+        <label>
+          속도
+          <input id="speedRange" type="range" min="1" max="200" value="60" />
+          <span id="speedLabel">60 moves/s</span>
+        </label>
+        <label>
+          프레임당 이동
+          <input id="batchRange" type="range" min="1" max="50" value="10" />
+          <span id="batchLabel">10</span>
+        </label>
+      </div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <main>
+      <section>
+        <h2>현재 세대의 10개 병렬 경기</h2>
+        <div id="matchesGrid" class="matches-grid"></div>
+      </section>
+
+      <section class="history-panel">
+        <h2>세대 이력</h2>
+        <div id="historyList" class="history-list"></div>
+      </section>
+
+      <section class="replay-panel">
+        <h2>리플레이</h2>
+        <div id="replayMeta">기록을 선택하세요.</div>
+        <label class="replay-slider hidden" id="replaySliderWrap">
+          수순
+          <input id="replaySlider" type="range" min="0" max="0" value="0" />
+          <span id="replayMoveLabel">0 / 0</span>
+        </label>
+        <canvas id="replayBoard" width="360" height="360"></canvas>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
