@@ -1,0 +1,131 @@
+:root {
+  color-scheme: dark;
+  --bg: #111723;
+  --panel: #1b2537;
+  --surface: #0f1729;
+  --text: #e4eaf7;
+  --muted: #9fb3d9;
+  --accent: #5cb3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #16223a, #0b0f18 70%);
+  color: var(--text);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 350px minmax(500px, 1fr);
+  gap: 1rem;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.panel {
+  background: color-mix(in srgb, var(--panel), black 8%);
+  border: 1px solid #2f3f5a;
+  border-radius: 16px;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.panel h1 {
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.control-group {
+  border: 1px solid #31405c;
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-top: 0.8rem;
+  background: color-mix(in srgb, var(--surface), black 6%);
+}
+
+.control-group h2 {
+  margin: 0 0 0.65rem 0;
+  font-size: 1rem;
+}
+
+label {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type='range'] {
+  width: 100%;
+}
+
+output {
+  width: 3.2rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #c6ddff;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+button {
+  border: 1px solid #43608f;
+  background: linear-gradient(180deg, #2a3f66, #243558);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.45rem 0.65rem;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+button.active {
+  border-color: #7ec7ff;
+  background: linear-gradient(180deg, #2c5d8d, #264f79);
+}
+
+.canvas-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: color-mix(in srgb, var(--panel), black 10%);
+  border-radius: 16px;
+  border: 1px solid #2f3f5a;
+  padding: 0.8rem;
+}
+
+canvas {
+  border: 1px solid #384a6b;
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  background: #020711;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-wrap {
+    min-height: 56vh;
+  }
+}

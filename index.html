@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D 파동 시뮬레이터</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <h1>2D 파동 시뮬레이터</h1>
+        <p class="hint">
+          캔버스를 클릭하면 파동 펄스를 추가합니다. <b>장애물 그리기</b> 모드에서 벽을
+          직접 그릴 수 있습니다.
+        </p>
+
+        <div class="control-group">
+          <h2>시간 / 실행</h2>
+          <label>
+            <span>재생 속도 (스텝/프레임)</span>
+            <input id="substeps" type="range" min="1" max="8" value="2" />
+            <output id="substepsValue">2</output>
+          </label>
+          <label>
+            <span>감쇠 (0~1)</span>
+            <input id="damping" type="range" min="0.94" max="1" step="0.001" value="0.997" />
+            <output id="dampingValue">0.997</output>
+          </label>
+          <div class="button-row">
+            <button id="pauseBtn">일시정지</button>
+            <button id="stepBtn">한 스텝</button>
+            <button id="clearWaveBtn">파동만 초기화</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h2>파동 설정</h2>
+          <label>
+            <span>파동 속도 c</span>
+            <input id="speed" type="range" min="0.05" max="0.8" step="0.01" value="0.35" />
+            <output id="speedValue">0.35</output>
+          </label>
+          <label>
+            <span>펄스 세기</span>
+            <input id="impulse" type="range" min="0.2" max="4" step="0.1" value="1.6" />
+            <output id="impulseValue">1.6</output>
+          </label>
+          <label>
+            <span>소스 주파수 (Hz)</span>
+            <input id="sourceFreq" type="range" min="0.5" max="12" step="0.1" value="3.5" />
+            <output id="sourceFreqValue">3.5</output>
+          </label>
+          <div class="button-row">
+            <button id="toggleSourceBtn">진동 소스: OFF</button>
+            <button id="addPulseBtn">중앙 펄스 추가</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h2>장애물 설정</h2>
+          <label>
+            <span>브러시 크기</span>
+            <input id="brushSize" type="range" min="1" max="16" value="4" />
+            <output id="brushSizeValue">4</output>
+          </label>
+          <div class="button-row">
+            <button id="drawObstacleBtn">장애물 그리기: OFF</button>
+            <button id="eraseObstacleBtn">지우기 모드: OFF</button>
+            <button id="clearObstacleBtn">장애물 전체 삭제</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="canvas-wrap">
+        <canvas id="simCanvas" width="720" height="520"></canvas>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
