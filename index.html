@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D 파동 시뮬레이터</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel controls">
+        <h1>2D 파동 시뮬레이터</h1>
+        <p class="hint">클릭/드래그로 파동을 만들고, 장애물은 그리기 도구로 배치하세요.</p>
+
+        <div class="control-group">
+          <label for="resolution">격자 해상도</label>
+          <select id="resolution">
+            <option value="160">160 x 160 (가벼움)</option>
+            <option value="220" selected>220 x 220 (기본)</option>
+            <option value="300">300 x 300 (부드러움)</option>
+          </select>
+          <button id="apply-resolution">해상도 적용</button>
+        </div>
+
+        <div class="control-group">
+          <label for="source-mode">파동 소스 모드</label>
+          <select id="source-mode">
+            <option value="pulse">펄스 (한 번)</option>
+            <option value="continuous" selected>연속 사인파</option>
+          </select>
+        </div>
+
+        <div class="grid two-col">
+          <label>진폭 <span id="amp-val">0.90</span>
+            <input id="amplitude" type="range" min="0.05" max="1.5" step="0.05" value="0.9" />
+          </label>
+          <label>주파수 <span id="freq-val">3.0</span> Hz
+            <input id="frequency" type="range" min="0.5" max="12" step="0.1" value="3.0" />
+          </label>
+          <label>전파 속도 c <span id="speed-val">0.32</span>
+            <input id="speed" type="range" min="0.05" max="0.6" step="0.01" value="0.32" />
+          </label>
+          <label>감쇠량 <span id="damp-val">0.003</span>
+            <input id="damping" type="range" min="0" max="0.02" step="0.0005" value="0.003" />
+          </label>
+          <label>시간 배속 <span id="time-val">1.0</span>x
+            <input id="time-scale" type="range" min="0.2" max="3" step="0.1" value="1.0" />
+          </label>
+          <label>브러시 반경 <span id="brush-val">7</span>
+            <input id="brush-size" type="range" min="2" max="24" step="1" value="7" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label for="tool">도구</label>
+          <select id="tool">
+            <option value="wave" selected>파동 만들기</option>
+            <option value="obstacle-draw">장애물 그리기</option>
+            <option value="obstacle-erase">장애물 지우기</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button id="toggle">일시정지</button>
+          <button id="clear-wave">파동 리셋</button>
+          <button id="clear-obstacles">장애물 전체 삭제</button>
+        </div>
+      </section>
+
+      <section class="panel canvas-wrap">
+        <canvas id="sim"></canvas>
+      </section>
+    </main>
+
+    <script src="wave-sim.js"></script>
+  </body>
+</html>
